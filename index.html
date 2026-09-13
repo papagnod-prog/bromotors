@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BroMotors - Rivenditore auto usate e noleggio a breve termine. Trova la tua auto perfetta o noleggia subito a prezzi competitivi." />
+  <meta name="keywords" content="auto usate, noleggio auto, breve termine, BroMotors, veicoli usati" />
+  <title>BroMotors - Auto Usate &amp; Noleggio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <meta name="theme-color" content="#FF6B00" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BroMotors - Auto Usate &amp; Noleggio" />
+  <meta property="og:description" content="Rivenditore auto usate e noleggio a breve termine. Qualità garantita dal 2008." />
+  <meta property="og:image" content="images/hero-bg.jpg" />
+  <meta property="og:type" content="website" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">
+        <img src="logo.png" alt="BroMotors" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <span class="logo-fallback"><span class="logo-bro">BRO</span><span class="logo-motors">MOTORS</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#catalogo">Auto Usate</a>
+        <a href="#noleggio">Noleggio</a>
+        <a href="#chi-siamo">Chi Siamo</a>
+        <a href="#recensioni">Recensioni</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contatti" class="btn btn-primary nav-cta">Contattaci</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero-bg-img" id="heroBgImg" style="background-image:url('images/hero-bg.jpg')"></div>
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <div class="hero-badge">Rivenditore Certificato</div>
+      <h1>La tua prossima auto<br /><span class="accent">ti aspetta da noi</span></h1>
+      <p class="hero-sub">Auto usate selezionate e noleggio a breve termine.<br />Qualità garantita, prezzi trasparenti.</p>
+      <div class="hero-actions">
+        <a href="#catalogo" class="btn btn-primary btn-lg">Sfoglia il Catalogo</a>
+        <a href="#noleggio" class="btn btn-outline btn-lg">Noleggio Rapido</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>150+</strong>
+          <span>Veicoli disponibili</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>5.000+</strong>
+          <span>Clienti soddisfatti</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>15+</strong>
+          <span>Anni di esperienza</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===== CATALOGO AUTO USATE ===== -->
+  <section class="section" id="catalogo">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Auto Usate</div>
+        <h2>Il nostro <span class="accent">catalogo</span></h2>
+        <p>Veicoli selezionati, revisionati e garantiti. Trova quello che fa per te.</p>
+      </div>
+
+      <!-- Filtri -->
+      <div class="filtri">
+        <button class="filtro active" data-filter="all">Tutti</button>
+        <button class="filtro" data-filter="berlina">Berlina</button>
+        <button class="filtro" data-filter="suv">SUV</button>
+        <button class="filtro" data-filter="utilitaria">Utilitaria</button>
+        <button class="filtro" data-filter="station">Station Wagon</button>
+      </div>
+
+      <!-- Griglia auto -->
+      <div class="auto-grid" id="autoGrid">
+
+        <div class="auto-card" data-category="suv">
+          <div class="auto-img-wrap">
+            <div class="auto-img placeholder-img suv-img"></div>
+            <div class="auto-badge">SUV</div>
+          </div>
+          <div class="auto-info">
+            <h3>Volkswagen Tiguan</h3>
+            <div class="auto-meta">
+              <span>2021</span>
+              <span>48.000 km</span>
+              <span>Diesel</span>
+            </div>
+            <div class="auto-features">
+              <span>Automatico</span>
+              <span>Navi</span>
+              <span>LED</span>
+            </div>
+            <div class="auto-footer">
+              <div class="auto-price">
+                <strong>€ 28.900</strong>
+              </div>
+              <a href="#contatti" class="btn btn-sm btn-primary">Info</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-card" data-category="berlina">
+          <div class="auto-img-wrap">
+            <div class="auto-img placeholder-img berlina-img"></div>
+            <div class="auto-badge">Berlina</div>
+          </div>
+          <div class="auto-info">
+            <h3>BMW Serie 3</h3>
+            <div class="auto-meta">
+              <span>2020</span>
+              <span>62.000 km</span>
+              <span>Benzina</span>
+            </div>
+            <div class="auto-features">
+              <span>Automatico</span>
+              <span>Tetto apri</span>
+              <span>Sport</span>
+            </div>
+            <div class="auto-footer">
+              <div class="auto-price">
+                <strong>€ 31.500</strong>
+              </div>
+              <a href="#contatti" class="btn btn-sm btn-primary">Info</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-card" data-category="utilitaria">
+          <div class="auto-img-wrap">
+            <div class="auto-img placeholder-img utilitaria-img"></div>
+            <div class="auto-badge">Utilitaria</div>
+          </div>
+          <div class="auto-info">
+            <h3>Fiat 500X</h3>
+            <div class="auto-meta">
+              <span>2022</span>
+              <span>22.000 km</span>
+              <span>Ibrido</span>
+            </div>
+            <div class="auto-features">
+              <span>Manuale</span>
+              <span>Apple Car</span>
+              <span>Cruise</span>
+            </div>
+            <div class="auto-footer">
+              <div class="auto-price">
+                <strong>€ 17.900</strong>
+              </div>
+              <a href="#contatti" class="btn btn-sm btn-primary">Info</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-card" data-category="suv">
+          <div class="auto-img-wrap">
+            <div class="auto-img placeholder-img suv2-img"></div>
+            <div class="auto-badge">SUV</div>
+          </div>
+          <div class="auto-info">
+            <h3>Toyota RAV4</h3>
+            <div class="auto-meta">
+              <span>2020</span>
+              <span>55.000 km</span>
+              <span>Ibrido</span>
+            </div>
+            <div class="auto-features">
+              <span>AWD</span>
+              <span>Navi</span>
+              <span>Cam 360</span>
+            </div>
+            <div class="auto-footer">
+              <div class="auto-price">
+                <strong>€ 33.200</strong>
+              </div>
+              <a href="#contatti" class="btn btn-sm btn-primary">Info</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-card" data-category="berlina">
+          <div class="auto-img-wrap">
+            <div class="auto-img placeholder-img berlina2-img"></div>
+            <div class="auto-badge">Berlina</div>
+          </div>
+          <div class="auto-info">
+            <h3>Mercedes Classe A</h3>
+            <div class="auto-meta">
+              <span>2021</span>
+              <span>41.000 km</span>
+              <span>Diesel</span>
+            </div>
+            <div class="auto-features">
+              <span>Automatico</span>
+              <span>MBUX</span>
+              <span>LED</span>
+            </div>
+            <div class="auto-footer">
+              <div class="auto-price">
+                <strong>€ 26.700</strong>
+              </div>
+              <a href="#contatti" class="btn btn-sm btn-primary">Info</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="auto-card" data-category="station">
+          <div class="auto-img-wrap">
+            <div class="auto-img placeholder-img station-img"></div>
+            <div class="auto-badge">Station</div>
+          </div>
+          <div class="auto-info">
+            <h3>Audi A4 Avant</h3>
+            <div class="auto-meta">
+              <span>2019</span>
+              <span>78.000 km</span>
+              <span>Diesel</span>
+            </div>
+            <div class="auto-features">
+              <span>S-Tronic</span>
+              <span>MMI Navi</span>
+              <span>Tetto</span>
+            </div>
+            <div class="auto-footer">
+              <div class="auto-price">
+                <strong>€ 24.500</strong>
+              </div>
+              <a href="#contatti" class="btn btn-sm btn-primary">Info</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="catalogo-footer">
+        <a href="#contatti" class="btn btn-outline">Vedi tutto il catalogo &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOLEGGIO ===== -->
+  <section class="section section-dark" id="noleggio">
+    <div class="container">
+      <div class="section-header section-header-light">
+        <div class="section-tag tag-light">Noleggio a Breve Termine</div>
+        <h2>Noleggia subito, <span class="accent-light">semplicemente</span></h2>
+        <p>Zero pensieri, massima flessibilità. Dal giorno alla settimana.</p>
+      </div>
+
+      <div class="noleggio-grid">
+        <div class="noleggio-card">
+          <div class="noleggio-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <h3>Utilitarie</h3>
+          <p>Perfette per la città, economiche e comode.</p>
+          <div class="noleggio-price">
+            <span>da</span>
+            <strong>€ 35</strong>
+            <span>/ giorno</span>
+          </div>
+          <a href="#contatti" class="btn btn-outline-light">Prenota</a>
+        </div>
+
+        <div class="noleggio-card noleggio-card-featured">
+          <div class="noleggio-badge-top">Più richiesto</div>
+          <div class="noleggio-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+          </div>
+          <h3>SUV &amp; Crossover</h3>
+          <p>Spazio, comfort e sicurezza per ogni viaggio.</p>
+          <div class="noleggio-price">
+            <span>da</span>
+            <strong>€ 65</strong>
+            <span>/ giorno</span>
+          </div>
+          <a href="#contatti" class="btn btn-primary">Prenota</a>
+        </div>
+
+        <div class="noleggio-card">
+          <div class="noleggio-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l1-4h16l1 4"/><path d="M5 13V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+          </div>
+          <h3>Premium &amp; Lusso</h3>
+          <p>Viaggi di lavoro o occasioni speciali in grande stile.</p>
+          <div class="noleggio-price">
+            <span>da</span>
+            <strong>€ 110</strong>
+            <span>/ giorno</span>
+          </div>
+          <a href="#contatti" class="btn btn-outline-light">Prenota</a>
+        </div>
+      </div>
+
+      <div class="noleggio-perks">
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Assicurazione inclusa</span>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Nessun deposito cauzionale nascosto</span>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Consegna in sede immediata</span>
+        </div>
+        <div class="perk">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          <span>Assistenza 24/7</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CHI SIAMO ===== -->
+  <section class="section" id="chi-siamo">
+    <div class="container chi-siamo-grid">
+      <div class="chi-siamo-text">
+        <div class="section-tag">Chi Siamo</div>
+        <h2>Passione per l'auto<br /><span class="accent">dal 2008</span></h2>
+        <p>BroMotors nasce dalla passione di due fratelli per il mondo dell'automobile. In oltre 15 anni abbiamo costruito un'attività fondata sulla fiducia, la trasparenza e la cura del cliente.</p>
+        <p>Ogni veicolo nel nostro parco auto viene accuratamente selezionato, revisionato e garantito. Non vendiamo semplicemente auto: costruiamo relazioni durature.</p>
+        <div class="chi-values">
+          <div class="value-item">
+            <div class="value-icon">&#128269;</div>
+            <div>
+              <strong>Trasparenza</strong>
+              <p>Storico completo e perizie certificate per ogni veicolo.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">&#128736;</div>
+            <div>
+              <strong>Qualità</strong>
+              <p>Revisione meccanica a 50 punti prima della vendita.</p>
+            </div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">&#129309;</div>
+            <div>
+              <strong>Assistenza</strong>
+              <p>Ti seguiamo prima, durante e dopo l'acquisto.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="chi-siamo-img">
+        <div class="img-placeholder-chi" id="chiSiamoImg" style="background-image:url('images/chi-siamo.jpg');background-size:cover;background-position:center;"></div>
+        <div class="chi-badge">
+          <strong>15+</strong>
+          <span>anni di attività</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RECENSIONI ===== -->
+  <section class="section section-gray" id="recensioni">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Recensioni</div>
+        <h2>Cosa dicono i nostri <span class="accent">clienti</span></h2>
+        <p>Oltre 5.000 clienti soddisfatti. Leggi le loro esperienze.</p>
+      </div>
+
+      <div class="stars-overall">
+        <div class="stars-big">
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+          <span class="star filled">&#9733;</span>
+        </div>
+        <strong>4.9 / 5</strong>
+        <span>basato su 312 recensioni</span>
+      </div>
+
+      <div class="recensioni-grid" id="recensioniGrid">
+
+        <div class="recensione-card">
+          <div class="rec-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Ho comprato la mia Tiguan da BroMotors e sono rimasto stupito dalla professionalità. Auto perfetta, nessuna sorpresa. Lo consiglio a tutti!"</p>
+          <div class="rec-author">
+            <div class="rec-avatar">MR</div>
+            <div>
+              <strong>Marco R.</strong>
+              <span>Cliente verificato</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recensione-card">
+          <div class="rec-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Noleggio rapido e senza intoppi. Ho prenotato per un weekend e in 10 minuti ero già in strada. Prezzi onesti e auto in perfette condizioni."</p>
+          <div class="rec-author">
+            <div class="rec-avatar">GL</div>
+            <div>
+              <strong>Giulia L.</strong>
+              <span>Cliente verificato</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recensione-card">
+          <div class="rec-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Finalmente un'agenzia seria! Nessuna pressione, tutta la documentazione chiara e il veicolo esattamente come descritto online. Tornerò sicuramente."</p>
+          <div class="rec-author">
+            <div class="rec-avatar">AP</div>
+            <div>
+              <strong>Andrea P.</strong>
+              <span>Cliente verificato</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recensione-card">
+          <div class="rec-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Ho noleggiato un SUV per le vacanze. Tutto perfetto, prezzo competitivo e assistenza gentilissima. Un'esperienza che ripeterò senza dubbio!"</p>
+          <div class="rec-author">
+            <div class="rec-avatar">SF</div>
+            <div>
+              <strong>Sara F.</strong>
+              <span>Cliente verificato</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recensione-card">
+          <div class="rec-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Ho acquistato la mia prima auto usata qui. Mi hanno guidato passo dopo passo, spiegato tutto con pazienza. Consigliato al 100%!"</p>
+          <div class="rec-author">
+            <div class="rec-avatar">LB</div>
+            <div>
+              <strong>Luca B.</strong>
+              <span>Cliente verificato</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recensione-card">
+          <div class="rec-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p>"Ottima esperienza dal primo contatto alla consegna. Il personale è preparato, disponibile e non ti mette mai fretta. Tornerò!"</p>
+          <div class="rec-author">
+            <div class="rec-avatar">VC</div>
+            <div>
+              <strong>Valentina C.</strong>
+              <span>Cliente verificato</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="container faq-container">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2>Domande <span class="accent">frequenti</span></h2>
+        <p>Trova risposta ai dubbi più comuni. Non trovi quello che cerchi? Contattaci!</p>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Cosa include la garanzia sulle auto usate?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Tutte le auto usate nel nostro catalogo includono una garanzia minima di 12 mesi su motore, cambio e impianto elettrico. Offriamo anche garanzie estese fino a 36 mesi. Ogni veicolo viene sottoposto a una revisione a 50 punti prima della vendita.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Posso finanziare l'acquisto?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sì, lavoriamo con i principali istituti finanziari italiani per offrirti soluzioni di finanziamento personalizzate. Puoi scegliere tra finanziamento tradizionale, leasing e noleggio a lungo termine con possibilità di riscatto.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Cosa mi serve per noleggiare un'auto?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Per il noleggio a breve termine bastano: patente di guida valida (da almeno 1 anno), carta d'identità o passaporto e carta di credito intestata al guidatore. L'età minima è 21 anni. Non è richiesto deposito cauzionale in contanti.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Posso portare in permuta il mio veicolo?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Assolutamente sì! Valutiamo gratuitamente il tuo veicolo usato. Puoi portarlo in sede oppure inviarci foto e dati tecnici per una prima valutazione online. La permuta può essere detratta direttamente dal prezzo dell'auto che acquisti.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Le auto noleggio hanno chilometraggio illimitato?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>I nostri contratti di noleggio includono fino a 300 km/giorno senza costi aggiuntivi. Per esigenze superiori sono disponibili pacchetti chilometrici aggiuntivi a tariffe vantaggiose. Contattaci per un preventivo personalizzato.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Consegnate le auto a domicilio?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Sì, offriamo la consegna a domicilio sia per le auto acquistate che per quelle noleggiate (entro 30 km dalla sede). Contattaci per verificare la disponibilità nella tua zona e i tempi di consegna.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATTI ===== -->
+  <section class="section section-dark" id="contatti">
+    <div class="container contatti-grid">
+
+      <div class="contatti-info">
+        <div class="section-tag tag-light">Contatti</div>
+        <h2 style="color:#fff;">Parlaci del<br /><span class="accent-light">tuo progetto</span></h2>
+        <p style="color:rgba(255,255,255,0.75);">Che tu voglia acquistare, noleggiare o semplicemente fare una domanda, siamo qui per te.</p>
+
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <strong>Indirizzo</strong>
+              <span>Via Roma 42, 00100 Roma (RM)</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.38 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6 6l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <strong>Telefono</strong>
+              <span>+39 06 123 4567</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <strong>Email</strong>
+              <span>info@bromotors.it</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <strong>Orari</strong>
+              <span>Lun-Sab: 9:00-19:00 | Dom: 10:00-13:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contatti-form-wrap">
+        <form class="contatti-form" id="contattiForm" novalidate>
+          <h3>Invia un messaggio</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome *</label>
+              <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required />
+            </div>
+            <div class="form-group">
+              <label for="cognome">Cognome *</label>
+              <input type="text" id="cognome" name="cognome" placeholder="Il tuo cognome" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="email@esempio.it" required />
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Telefono</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+39 000 000 0000" />
+          </div>
+
+          <div class="form-group">
+            <label for="interesse">Sono interessato a</label>
+            <select id="interesse" name="interesse">
+              <option value="">-- Seleziona --</option>
+              <option value="acquisto">Acquisto auto usata</option>
+              <option value="noleggio">Noleggio a breve termine</option>
+              <option value="permuta">Permuta veicolo</option>
+              <option value="finanziamento">Finanziamento</option>
+              <option value="altro">Altro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="messaggio">Messaggio *</label>
+            <textarea id="messaggio" name="messaggio" rows="4" placeholder="Scrivi la tua richiesta..." required></textarea>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" id="privacy" name="privacy" required />
+            <label for="privacy">Accetto il <a href="#">trattamento dei dati personali</a> ai sensi del GDPR.</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-full">Invia Messaggio</button>
+          <div class="form-success" id="formSuccess">Messaggio inviato! Ti contatteremo presto.</div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#home" class="logo">
+          <img src="logo.png" alt="BroMotors" class="logo-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+          <span class="logo-fallback"><span class="logo-bro">BRO</span><span class="logo-motors">MOTORS</span></span>
+        </a>
+        <p>Rivenditore di auto usate e noleggio a breve termine. Qualità e fiducia dal 2008.</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" aria-label="WhatsApp" class="social-link">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Servizi</h4>
+          <ul>
+            <li><a href="#catalogo">Auto Usate</a></li>
+            <li><a href="#noleggio">Noleggio Breve</a></li>
+            <li><a href="#contatti">Permuta</a></li>
+            <li><a href="#contatti">Finanziamento</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Azienda</h4>
+          <ul>
+            <li><a href="#chi-siamo">Chi Siamo</a></li>
+            <li><a href="#recensioni">Recensioni</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legale</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Termini di servizio</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2024 BroMotors S.r.l. | P.IVA 00000000000 | Tutti i diritti riservati</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/390612345678" class="whatsapp-float" target="_blank" aria-label="Contattaci su WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
