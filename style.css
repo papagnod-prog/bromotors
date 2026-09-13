@@ -199,11 +199,14 @@ p  { color: var(--text-muted); }
   position: absolute;
   inset: 0;
   background-size: cover;
-  background-position: center 60%;
+  background-position: center 55%;
   background-repeat: no-repeat;
-  opacity: 0.18;
-  transition: opacity 1s ease;
+  opacity: 0.38;
+  transition: opacity 1.2s ease;
   pointer-events: none;
+  /* Maschera: visibile a destra, sfuma verso sinistra (non copre il testo) */
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.9) 65%, black 100%);
+  mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.9) 65%, black 100%);
 }
 
 .hero-bg {
@@ -223,11 +226,51 @@ p  { color: var(--text-muted); }
   opacity: .6;
 }
 
+/* Hero layout: testo sx + auto dx */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 140px 0 80px;
+}
+
+/* Immagine auto hero (destra) */
+.hero-car-wrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 55%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-car-img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+  /* maschera: sfuma verso sinistra e in alto */
+  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.3) 70%, transparent 100%),
+                      linear-gradient(to bottom, transparent 0%, black 25%);
+  mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.3) 70%, transparent 100%);
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  opacity: 0.7;
+  transition: opacity 1s ease;
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 140px 0 80px;
-  max-width: 720px;
+  max-width: 580px;
 }
 
 .hero-badge {
@@ -867,7 +910,9 @@ p  { color: var(--text-muted); }
   .nav-cta { align-self: stretch; text-align: center; }
   .hamburger { display: flex; z-index: 1001; position: relative; }
 
-  .hero-content { padding: 120px 0 60px; }
+  .hero-inner { grid-template-columns: 1fr; padding: 120px 0 60px; }
+  .hero-car-wrap { display: none; }
+  .hero-bg-img { opacity: 0.25; -webkit-mask-image: none; mask-image: none; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
   .hero-stats { gap: 20px; }
