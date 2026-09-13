@@ -168,6 +168,13 @@ async function loadSiteImages() {
     const chiSiamoEl = document.getElementById('chiSiamoImg');
     if (chiSiamoEl && map.chi_siamo) {
       chiSiamoEl.style.backgroundImage = `url('images/${map.chi_siamo}?t=${Date.now()}')`;
+      chiSiamoEl.classList.add('has-image');
+    }
+
+    // Noleggio sfondo
+    if (map.noleggio_bg) {
+      const nolEl = document.getElementById('noleggio');
+      if (nolEl) nolEl.style.backgroundImage = `url('images/${map.noleggio_bg}?t=${Date.now()}')`;
     }
 
     // CSS variables per sfondi sezioni

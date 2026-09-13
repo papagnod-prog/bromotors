@@ -353,12 +353,43 @@ p  { color: var(--text-muted); }
 }
 #catalogo .container { position: relative; z-index: 1; }
 
+/* ── Noleggio: sfondo foto con overlay scuro ── */
 #noleggio {
-  background-image: var(--noleggio-bg, none);
+  position: relative;
+  background-image: url('../images/noleggio-bg.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center 40%;
   background-attachment: fixed;
+  isolation: isolate;
 }
+#noleggio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  /* overlay scuro semi-trasparente che mantiene il testo leggibile */
+  background: linear-gradient(
+    135deg,
+    rgba(10,10,10,.88) 0%,
+    rgba(17,17,17,.82) 50%,
+    rgba(10,10,10,.88) 100%
+  );
+  z-index: 0;
+}
+#noleggio > * { position: relative; z-index: 1; }
+
+/* ── Chi Siamo: immagine reale nella colonna destra ── */
+.img-placeholder-chi {
+  width: 100%;
+  height: 480px;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+}
+/* Rimuoviamo il vecchio pseudo-element placeholder quando c'è un'immagine reale */
+.img-placeholder-chi.has-image::after { display: none; }
 
 /* =============================================
    CATALOGO
