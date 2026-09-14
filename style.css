@@ -204,7 +204,6 @@ p  { color: var(--text-muted); }
   opacity: 0.38;
   transition: opacity 1.2s ease;
   pointer-events: none;
-  /* Maschera: visibile a destra, sfuma verso sinistra (non copre il testo) */
   -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.9) 65%, black 100%);
   mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.9) 65%, black 100%);
 }
@@ -226,7 +225,6 @@ p  { color: var(--text-muted); }
   opacity: .6;
 }
 
-/* Hero layout: testo sx + auto dx */
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -237,7 +235,6 @@ p  { color: var(--text-muted); }
   padding: 140px 0 80px;
 }
 
-/* Immagine auto hero (destra) */
 .hero-car-wrap {
   position: absolute;
   right: 0;
@@ -257,7 +254,6 @@ p  { color: var(--text-muted); }
   object-fit: cover;
   object-position: center;
   border-radius: 0;
-  /* maschera: sfuma verso sinistra e in alto */
   -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.3) 70%, transparent 100%),
                       linear-gradient(to bottom, transparent 0%, black 25%);
   mask-image: linear-gradient(to left, rgba(0,0,0,0.85) 40%, rgba(0,0,0,0.3) 70%, transparent 100%);
@@ -353,7 +349,6 @@ p  { color: var(--text-muted); }
 }
 #catalogo .container { position: relative; z-index: 1; }
 
-/* ── Noleggio: sfondo foto con overlay scuro ── */
 #noleggio {
   position: relative;
   background-image: url('../images/noleggio-bg.jpg');
@@ -366,7 +361,6 @@ p  { color: var(--text-muted); }
   content: '';
   position: absolute;
   inset: 0;
-  /* overlay scuro semi-trasparente che mantiene il testo leggibile */
   background: linear-gradient(
     135deg,
     rgba(10,10,10,.88) 0%,
@@ -377,7 +371,6 @@ p  { color: var(--text-muted); }
 }
 #noleggio > * { position: relative; z-index: 1; }
 
-/* ── Chi Siamo: immagine reale nella colonna destra ── */
 .img-placeholder-chi {
   width: 100%;
   height: 480px;
@@ -388,7 +381,6 @@ p  { color: var(--text-muted); }
   position: relative;
   overflow: hidden;
 }
-/* Rimuoviamo il vecchio pseudo-element placeholder quando c'è un'immagine reale */
 .img-placeholder-chi.has-image::after { display: none; }
 
 /* =============================================
@@ -793,7 +785,6 @@ p  { color: var(--text-muted); }
 .info-item strong { display: block; color: rgba(255,255,255,.9); font-size: .9rem; margin-bottom: 2px; }
 .info-item span   { color: rgba(255,255,255,.6); font-size: .88rem; }
 
-/* Form */
 .contatti-form-wrap {
   background: #fff;
   border-radius: var(--radius-lg);
@@ -992,4 +983,177 @@ p  { color: var(--text-muted); }
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* =============================================
+   SCHEDA DETTAGLIO AUTO (modale)
+   ============================================= */
+.dettaglio-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .3s ease, visibility .3s ease;
+}
+.dettaglio-modal.open { visibility: visible; opacity: 1; }
+
+.dettaglio-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,.7);
+  backdrop-filter: blur(6px);
+}
+
+.dettaglio-dialog {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(24px) scale(.98);
+  transition: transform .3s ease;
+}
+.dettaglio-modal.open .dettaglio-dialog { transform: translateY(0) scale(1); }
+
+.dettaglio-close {
+  position: absolute;
+  top: 14px; right: 14px;
+  z-index: 5;
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,.92);
+  color: var(--text);
+  font-size: 1.6rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.dettaglio-close:hover { background: var(--accent); color: #fff; transform: rotate(90deg); }
+
+.dettaglio-body { padding: 8px 8px 32px; }
+.dettaglio-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 0;
+}
+.dettaglio-gallery { position: relative; background: #0a0a0a; }
+.dettaglio-gallery > img {
+  width: 100%;
+  height: 100%;
+  min-height: 380px;
+  object-fit: cover;
+  display: none;
+}
+.dettaglio-gallery > img.active { display: block; }
+
+.dettaglio-thumbs {
+  position: absolute;
+  bottom: 12px; left: 0; right: 0;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 0 12px;
+  flex-wrap: wrap;
+}
+.dettaglio-thumb {
+  width: 64px; height: 48px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  opacity: .7;
+  transition: all var(--transition);
+  padding: 0;
+  flex-shrink: 0;
+}
+.dettaglio-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.dettaglio-thumb.active { border-color: var(--accent); opacity: 1; }
+.dettaglio-thumb:hover { opacity: 1; }
+
+.dettaglio-info { padding: 32px 36px; }
+.dettaglio-info h2 { font-size: 1.9rem; margin: 8px 0 4px; }
+.dettaglio-versione { font-size: .95rem; margin-bottom: 12px; color: var(--text-muted); }
+
+.dettaglio-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.dettaglio-meta span {
+  font-size: .85rem;
+  color: var(--text-muted);
+  position: relative;
+}
+.dettaglio-meta span:not(:last-child)::after {
+  content: '·';
+  position: absolute;
+  right: -9px;
+  color: var(--border);
+}
+
+.dettaglio-price { display: flex; align-items: baseline; gap: 12px; margin-bottom: 20px; }
+.dettaglio-price s { color: #999; font-size: 1.05rem; }
+.dettaglio-price strong { font-size: 2.2rem; font-weight: 800; color: var(--primary); }
+
+.dettaglio-noleggio {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: var(--bg-gray);
+  border-radius: var(--radius);
+}
+.dettaglio-noleggio > div { display: flex; flex-direction: column; }
+.dettaglio-noleggio strong { font-size: 1.3rem; font-weight: 800; color: var(--accent); }
+.dettaglio-noleggio span { font-size: .75rem; color: var(--text-muted); }
+
+.dettaglio-azioni { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
+
+.dettaglio-desc { margin-bottom: 20px; }
+.dettaglio-desc h4 { margin-bottom: 8px; }
+.dettaglio-desc p { font-size: .92rem; line-height: 1.7; color: var(--text-muted); }
+
+.dettaglio-optional h4 { margin-bottom: 12px; }
+.dettaglio-optional .auto-features { margin-bottom: 0; }
+
+.dettaglio-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 32px;
+  padding: 24px 36px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+.spec-col { display: flex; flex-direction: column; }
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .9rem;
+}
+.spec-row:last-child { border-bottom: none; }
+.spec-label { color: var(--text-muted); }
+.spec-value { font-weight: 600; color: var(--text); text-align: right; }
+
+@media (max-width: 768px) {
+  .dettaglio-modal { padding: 0; }
+  .dettaglio-dialog { max-height: 100vh; border-radius: 0; }
+  .dettaglio-top { grid-template-columns: 1fr; }
+  .dettaglio-gallery > img { min-height: 260px; max-height: 320px; }
+  .dettaglio-info { padding: 24px 20px; }
+  .dettaglio-specs { grid-template-columns: 1fr; padding: 20px; }
 }
