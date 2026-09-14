@@ -395,6 +395,20 @@ function initDettaglioModal() {
   const apriDettaglio = async (id, modal) => {
     openBodyLoading(modal);
     openModal(modal);
+
+    /* Fallback statico: id "static-*" → dati presi dalla cache locale,
+       nessuna chiamata al backend (funziona anche offline). */
+    if (typeof id === 'string' && id.startsWith('static-')) {
+      const veicolo = (window.STATIC_VEICOLI || []).find(v => v.id === id);
+      if (veicolo) {
+        renderDettaglio(veicolo, modal);
+      } else {
+        modal.querySelector('#dettaglioBody').innerHTML =
+          `<p style="padding:60px;text-align:center;color:#6b7280;">Dettaglio non disponibile.</p>`;
+      }
+      return;
+    }
+
     try {
       const res  = await fetch(`${API_BASE}/veicoli/${id}`);
       const data = await res.json();
@@ -559,33 +573,96 @@ function addFiltro(btn, grid) {
   });
 }
 
+/* Veicoli demo usati quando il backend non è raggiungibile.
+   Ogni scheda ha un id univoco "static-*" così apriDettaglio()
+   può recuperarla dalla cache locale senza fetch (funziona anche offline). */
+const STATIC_VEICOLI = [
+  {
+    id: 'static-tiguan', tipo: 'vendita', categoria: 'suv', imgClass: 'suv-img',
+    marca: 'Volkswagen', modello: 'Tiguan', versione: '2.0 TDI Life',
+    anno: 2021, chilometri: 48000, carburante: 'diesel', cambio: 'dsg', trazione: 'anteriore',
+    cilindrata: 1968, potenza_cv: 150, colore: 'Grigio Platinum', porte: 5, posti: 5, euro: 'Euro 6D',
+    prezzo: 28900, prezzo_promo: null,
+    descrizione: 'Volkswagen Tiguan in ottime condizioni, tagliandata regolarmente presso rete ufficiale, unico proprietario, gomme quasi nuove.',
+    optional: ['Automatico', 'Navigatore', 'Fari LED', 'Sensori parcheggio', 'Climatizzatore bizona'],
+    foto: [], foto_copertina: null
+  },
+  {
+    id: 'static-bmw3', tipo: 'vendita', categoria: 'berlina', imgClass: 'berlina-img',
+    marca: 'BMW', modello: 'Serie 3', versione: '320d Business Advantage',
+    anno: 2020, chilometri: 62000, carburante: 'benzina', cambio: 'automatico', trazione: 'posteriore',
+    cilindrata: 1995, potenza_cv: 190, colore: 'Nero Sapphire', porte: 4, posti: 5, euro: 'Euro 6D',
+    prezzo: 31500, prezzo_promo: null,
+    descrizione: 'BMW Serie 3 con assetto sportivo, interni in pelle, sempre garantita e revisionata.',
+    optional: ['Automatico', 'Tetto apribile', 'Pacchetto Sport', 'Cerchi in lega 18"', 'Head-up display'],
+    foto: [], foto_copertina: null
+  },
+  {
+    id: 'static-500x', tipo: 'vendita', categoria: 'utilitaria', imgClass: 'utilitaria-img',
+    marca: 'Fiat', modello: '500X', versione: '1.0 Hybrid Cross',
+    anno: 2022, chilometri: 22000, carburante: 'ibrido', cambio: 'manuale', trazione: 'anteriore',
+    cilindrata: 999, potenza_cv: 110, colore: 'Bianco Gelato', porte: 5, posti: 5, euro: 'Euro 6D',
+    prezzo: 17900, prezzo_promo: 16900,
+    descrizione: 'Fiat 500X praticamente nuova, ancora in garanzia di fabbrica, consumi contenuti.',
+    optional: ['Manuale', 'Apple CarPlay/Android Auto', 'Cruise control adattivo', 'Sensori posteriori'],
+    foto: [], foto_copertina: null
+  },
+  {
+    id: 'static-rav4', tipo: 'vendita', categoria: 'suv', imgClass: 'suv2-img',
+    marca: 'Toyota', modello: 'RAV4', versione: '2.5 Hybrid AWD Style',
+    anno: 2020, chilometri: 55000, carburante: 'ibrido', cambio: 'automatico', trazione: 'integrale',
+    cilindrata: 2487, potenza_cv: 218, colore: 'Grigio Titanio', porte: 5, posti: 5, euro: 'Euro 6D',
+    prezzo: 33200, prezzo_promo: null,
+    descrizione: 'Toyota RAV4 Hybrid AWD, perfetta per famiglia, consumi ridotti e trazione integrale.',
+    optional: ['Trazione integrale', 'Navigatore', 'Telecamera 360°', 'Sedili riscaldati'],
+    foto: [], foto_copertina: null
+  },
+  {
+    id: 'static-classeA', tipo: 'vendita', categoria: 'berlina', imgClass: 'berlina2-img',
+    marca: 'Mercedes', modello: 'Classe A', versione: 'A200d Automatic Premium',
+    anno: 2021, chilometri: 41000, carburante: 'diesel', cambio: 'automatico', trazione: 'anteriore',
+    cilindrata: 1950, potenza_cv: 150, colore: 'Blu Cavansite', porte: 5, posti: 5, euro: 'Euro 6D',
+    prezzo: 26700, prezzo_promo: null,
+    descrizione: 'Mercedes Classe A con infotainment MBUX, full LED, interni Premium.',
+    optional: ['Automatico', 'MBUX con comandi vocali', 'Full LED', 'Climatizzatore automatico'],
+    foto: [], foto_copertina: null
+  },
+  {
+    id: 'static-a4', tipo: 'vendita', categoria: 'station', imgClass: 'station-img',
+    marca: 'Audi', modello: 'A4 Avant', versione: '2.0 TDI S-Tronic Business',
+    anno: 2019, chilometri: 78000, carburante: 'diesel', cambio: 'dsg', trazione: 'anteriore',
+    cilindrata: 1968, potenza_cv: 150, colore: 'Grigio Nardo', porte: 5, posti: 5, euro: 'Euro 6D',
+    prezzo: 24500, prezzo_promo: null,
+    descrizione: 'Audi A4 Avant S-Tronic, bagagliaio generoso, ideale per lunghi viaggi.',
+    optional: ['Cambio S-Tronic', 'MMI Navi Plus', 'Tetto panoramico', 'Sensori parcheggio Plus'],
+    foto: [], foto_copertina: null
+  }
+];
+window.STATIC_VEICOLI = STATIC_VEICOLI;
+
 function renderStaticCards(grid) {
-  const staticHTML = `
-    <div class="auto-card" data-category="suv">
-      <div class="auto-img-wrap"><div class="auto-img placeholder-img suv-img"></div><div class="auto-badge">SUV</div></div>
-      <div class="auto-info"><h3>Volkswagen Tiguan</h3><div class="auto-meta"><span>2021</span><span>48.000 km</span><span>Diesel</span></div><div class="auto-features"><span>Automatico</span><span>Navi</span><span>LED</span></div><div class="auto-footer"><div class="auto-price"><strong>€ 28.900</strong></div><a href="#dettaglio" class="btn btn-sm btn-primary">Dettagli</a></div></div>
-    </div>
-    <div class="auto-card" data-category="berlina">
-      <div class="auto-img-wrap"><div class="auto-img placeholder-img berlina-img"></div><div class="auto-badge">Berlina</div></div>
-      <div class="auto-info"><h3>BMW Serie 3</h3><div class="auto-meta"><span>2020</span><span>62.000 km</span><span>Benzina</span></div><div class="auto-features"><span>Automatico</span><span>Tetto apri</span><span>Sport</span></div><div class="auto-footer"><div class="auto-price"><strong>€ 31.500</strong></div><a href="#dettaglio" class="btn btn-sm btn-primary">Dettagli</a></div></div>
-    </div>
-    <div class="auto-card" data-category="utilitaria">
-      <div class="auto-img-wrap"><div class="auto-img placeholder-img utilitaria-img"></div><div class="auto-badge">Utilitaria</div></div>
-      <div class="auto-info"><h3>Fiat 500X</h3><div class="auto-meta"><span>2022</span><span>22.000 km</span><span>Ibrido</span></div><div class="auto-features"><span>Manuale</span><span>Apple Car</span><span>Cruise</span></div><div class="auto-footer"><div class="auto-price"><strong>€ 17.900</strong></div><a href="#dettaglio" class="btn btn-sm btn-primary">Dettagli</a></div></div>
-    </div>
-    <div class="auto-card" data-category="suv">
-      <div class="auto-img-wrap"><div class="auto-img placeholder-img suv2-img"></div><div class="auto-badge">SUV</div></div>
-      <div class="auto-info"><h3>Toyota RAV4</h3><div class="auto-meta"><span>2020</span><span>55.000 km</span><span>Ibrido</span></div><div class="auto-features"><span>AWD</span><span>Navi</span><span>Cam 360</span></div><div class="auto-footer"><div class="auto-price"><strong>€ 33.200</strong></div><a href="#dettaglio" class="btn btn-sm btn-primary">Dettagli</a></div></div>
-    </div>
-    <div class="auto-card" data-category="berlina">
-      <div class="auto-img-wrap"><div class="auto-img placeholder-img berlina2-img"></div><div class="auto-badge">Berlina</div></div>
-      <div class="auto-info"><h3>Mercedes Classe A</h3><div class="auto-meta"><span>2021</span><span>41.000 km</span><span>Diesel</span></div><div class="auto-features"><span>Automatico</span><span>MBUX</span><span>LED</span></div><div class="auto-footer"><div class="auto-price"><strong>€ 26.700</strong></div><a href="#dettaglio" class="btn btn-sm btn-primary">Dettagli</a></div></div>
-    </div>
-    <div class="auto-card" data-category="station">
-      <div class="auto-img-wrap"><div class="auto-img placeholder-img station-img"></div><div class="auto-badge">Station</div></div>
-      <div class="auto-info"><h3>Audi A4 Avant</h3><div class="auto-meta"><span>2019</span><span>78.000 km</span><span>Diesel</span></div><div class="auto-features"><span>S-Tronic</span><span>MMI Navi</span><span>Tetto</span></div><div class="auto-footer"><div class="auto-price"><strong>€ 24.500</strong></div><a href="#dettaglio" class="btn btn-sm btn-primary">Dettagli</a></div></div>
+  const badgeMap = {
+    suv: 'SUV', berlina: 'Berlina', utilitaria: 'Utilitaria', station: 'Station'
+  };
+  grid.innerHTML = STATIC_VEICOLI.map(v => {
+    const price = v.prezzo_promo
+      ? `<s>€ ${v.prezzo.toLocaleString('it-IT')}</s> <strong>€ ${v.prezzo_promo.toLocaleString('it-IT')}</strong>`
+      : `<strong>€ ${v.prezzo.toLocaleString('it-IT')}</strong>`;
+    const feats = v.optional.slice(0, 3).map(o => `<span>${o}</span>`).join('');
+    return `
+    <div class="auto-card" data-category="${v.categoria}" data-id="${v.id}">
+      <div class="auto-img-wrap"><div class="auto-img placeholder-img ${v.imgClass}"></div><div class="auto-badge">${badgeMap[v.categoria] || v.categoria}</div></div>
+      <div class="auto-info">
+        <h3>${v.marca} ${v.modello}</h3>
+        <div class="auto-meta"><span>${v.anno}</span><span>${v.chilometri.toLocaleString('it-IT')} km</span><span>${formatCarburante(v.carburante)}</span></div>
+        <div class="auto-features">${feats}</div>
+        <div class="auto-footer">
+          <div class="auto-price">${price}</div>
+          <a href="#dettaglio" class="btn btn-sm btn-primary" data-id="${v.id}">Dettagli</a>
+        </div>
+      </div>
     </div>`;
-  grid.innerHTML = staticHTML;
+  }).join('');
 }
 
 /* =============================================
